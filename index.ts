@@ -1,7 +1,7 @@
 import './style.css';
-import { merge, switchMap, tap } from 'rxjs';
+import { merge, switchMap, tap, of } from 'rxjs';
 import { interval, EMPTY, startWith } from 'rxjs';
-import { start, pause, reset } from './button-events'
+import { start, pause, reset } from './button-events';
 
 const speed = 1000;
 let counterValue = 0;
@@ -18,7 +18,7 @@ const stopwatch = merge(start, pause, reset)
     switchMap((status) => {
       if (status == 'reset') {
         counterValue = 0;
-        return EMPTY.pipe(startWith(counterValue));
+        return of(counterValue);
       } else if (status == 'pause') {
         return EMPTY;
       } else {
@@ -26,5 +26,5 @@ const stopwatch = merge(start, pause, reset)
       }
     }),
     tap((v) => updateStopwatch())
-  ).subscribe();
-
+  )
+  .subscribe();
