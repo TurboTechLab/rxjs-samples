@@ -3,7 +3,7 @@ import { merge, switchMap, tap, of } from 'rxjs';
 import { interval, EMPTY, startWith } from 'rxjs';
 import { start, pause, reset } from './button-events';
 
-const speed = 100;
+const speed = 1000;
 let counterValue = 0;
 
 const updateStopwatch = () => {
