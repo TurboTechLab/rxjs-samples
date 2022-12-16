@@ -18,18 +18,20 @@ const resetStopwatch = () => {
 const stopwatch = merge(start, pause, reset)
   .pipe(
     startWith('reset'),
-    tap((status) => console.log(status)),
+    tap((status) => {
+      console.log(status);
+      if(status == 'reset'){ resetStopwatch();}
+    }),
+
     //Switch between multiple observables
     switchMap((status) => {
-      if (status == 'reset') {
-        resetStopwatch();
-        return EMPTY;
-      } else if (status == 'pause') {
-        return EMPTY;
-      } else {
-        return interval(tickDuration);
+      if(status == 'start'){
+         return interval(tickDuration); 
+      } else{ 
+          return EMPTY; 
       }
     }),
-    tap((v) => tickStopwatch())
+
+    tap((v) => {console.log(v);tickStopwatch();})
   )
   .subscribe();
