@@ -3,11 +3,11 @@ import { merge, switchMap, tap, of } from 'rxjs';
 import { interval, EMPTY, startWith } from 'rxjs';
 import { start, pause, reset } from './button-events';
 
-const speed = 1000;
+const speed = 100;
 let counterValue = 0;
 
 const updateStopwatch = () => {
-  document.getElementById('stopwatch').innerText = counterValue + '';
+  document.getElementById('stopwatch').innerText = counterValue+'';
 };
 
 const stopwatch = merge(start, pause, reset)
