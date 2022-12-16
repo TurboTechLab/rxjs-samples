@@ -14,7 +14,7 @@ const stopwatch = merge(start, pause, reset)
   .pipe(
     startWith('reset'),
     tap((status) => console.log(status)),
-    
+    //Switch between multiple observables
     switchMap((status) => {
       if (status == 'reset') {
         counterValue = 0;
@@ -28,4 +28,3 @@ const stopwatch = merge(start, pause, reset)
     tap((v) => updateStopwatch())
   ).subscribe();
 
-// Open the console in the bottom right to see results.

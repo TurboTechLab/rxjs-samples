@@ -1,3 +1,5 @@
 # rxjs-samples
 
-[Stopwatch using switchMap⚡️](https://stackblitz.com/edit/rxjs-pufk8z)
+[Stopwatch using switchMap⚡️](https://turbotechlab.com/topics/rxjs/operator-transform-switch-map)
+
+
