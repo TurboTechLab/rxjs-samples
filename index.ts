@@ -3,16 +3,16 @@ import { merge, switchMap, tap } from 'rxjs';
 import { interval, EMPTY, startWith } from 'rxjs';
 import { start, pause, reset } from './button-events';
 
+let  tickerValue = 0;
 const tickDuration = 1000;
-let counterValue = 0;
 
 const tickStopwatch = () => {
-  counterValue++;
-  document.getElementById('stopwatch').innerText = counterValue + '';
+  tickerValue++;
+  document.getElementById('stopwatch').innerText = tickerValue + '';
 };
 const resetStopwatch = () => {
-  counterValue = 0;
-  document.getElementById('stopwatch').innerText = counterValue + '';
+  tickerValue = 0;
+  document.getElementById('stopwatch').innerText = tickerValue + '';
 };
 
 const stopwatch = merge(start, pause, reset)
