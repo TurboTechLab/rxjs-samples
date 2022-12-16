@@ -24,14 +24,10 @@ const stopwatch = merge(start, pause, reset)
     }),
 
     //Switch between multiple observables
-    switchMap((status) => {
-      if(status == 'start'){
-         return interval(tickDuration); 
-      } else{ 
-          return EMPTY; 
-      }
-    }),
+    switchMap((status) => 
+      (status == 'start')? interval(tickDuration) : EMPTY      
+    ),
 
-    tap((v) => {console.log(v);tickStopwatch();})
+    tap((v) => tickStopwatch())
   )
   .subscribe();
