@@ -1,5 +1,5 @@
 import './style.css';
-import { merge, switchMap, tap, of } from 'rxjs';
+import { merge, switchMap, tap } from 'rxjs';
 import { interval, EMPTY, startWith } from 'rxjs';
 import { start, pause, reset } from './button-events';
 
