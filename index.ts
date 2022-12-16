@@ -28,6 +28,6 @@ const stopwatch = merge(start, pause, reset)
       (status == 'start')? interval(tickDuration) : EMPTY      
     ),
 
-    tap((v) => tickStopwatch())
+    tap((tick) => tickStopwatch())
   )
   .subscribe();
