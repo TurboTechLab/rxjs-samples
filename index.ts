@@ -1,5 +1,5 @@
 import './style.css';
-import { merge, map, switchMap } from 'rxjs';
+import { merge, map, switchMap,tap } from 'rxjs';
 import { interval, EMPTY, fromEvent, startWith } from 'rxjs';
 
 const start = fromEvent(document.getElementById('start'), 'click').pipe(
@@ -23,10 +23,10 @@ const stopwatch = merge(start, pause, reset)
       }else  if (status == 'pause') {
           return EMPTY;
       } else {
-        return interval(speed);
+        return interval(speed).pipe(tap(v => counterValue++));
       }
     })
   )
-  .subscribe(console.log);
+  .subscribe(v => console.log(counterValue));
 
 // Open the console in the bottom right to see results.
